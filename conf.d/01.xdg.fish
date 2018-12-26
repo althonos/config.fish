@@ -46,7 +46,10 @@ alias mypy 'mypy --cache-dir="$XDG_CACHE_HOME/mypy"'
 # XDG Patches - Ruby
 set -x GEM_HOME "$XDG_DATA_HOME/gem"
 set -x GEM_SPEC_CACHE "$XDG_CACHE_HOME/gem"
-
+# Patch the GEM_PATH variable with latest ruby
+set -l RUBY_VERSION (ruby --version | sed "s/.*\([0-9]\.[0-9]\)\.[0-9].*/\1.0/g")
+set -x GEM_PATH "/usr/lib/ruby/gems/$RUBY_VERSION:$GEM_HOME/ruby/$RUBY_VERSION"
+#set -x PATH $PATH "$GEM_HOME/bin"
 
 # XDG Patches - Rust
 set -x CARGO_HOME "$XDG_DATA_HOME/cargo"
@@ -79,3 +82,14 @@ end
 mkdir -p "$XDG_CACHE_HOME/less"
 set -x LESSKEY "$XDG_CONFIG_HOME/less/lesskey"
 set -x LESSHISTFILE "$XDG_CACHE_HOME/less/history"
+
+
+
+# XDG Patches - R
+mkdir -p "$XDG_CACHE_HOME/R"
+set -gx R_ENVIRON "/etc/Renviron"
+set -gx R_ENVIRON_USER "$XDG_CONFIG_HOME/R/Renviron"
+set -gx R_LIBS_USER "$HOME/.local/lib/R/"
+set -gx R_HISTFILE "$XDG_CACHE_HOME/R/history"
+set -gx R_PROFILE_USER "$XDG_CONFIG_HOME/R/profile"
+set -gx R_HOME_USER "$XDG_DATA_HOME/R"
