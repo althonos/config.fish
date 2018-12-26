@@ -1,2 +1,5 @@
 alias ccat="ccat --bg=dark"
 alias open="gio open"
+alias ds="du -hxd1 . | sort -h"
+alias gvfs-trash="gio trash"
+alias mv="mv -i"
