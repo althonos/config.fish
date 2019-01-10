@@ -21,3 +21,8 @@ set -x PATH "$HOME/.local/bin" "$HOME/.local/scripts" "$VITASDK/bin" $PATH
 
 # Fix electron trash command
 set -gx ELECTRON_TRASH "gio"
+
+# devkitPro
+set -gx DEVKITPRO "/opt/devkitpro"
+set -x PATH "$DEVKITPRO/tools/bin" "$DEVKITPRO/devkitA64/bin" $PATH
+
