@@ -8,6 +8,8 @@ set -gx XDG_DATA_HOME "$HOME/.local/share"
 set -x MPLAYER_HOME "$XDG_CONFIG_HOME/mplayer"
 set -x DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"
 set -x TIGRC_USER "$XDG_CONFIG_HOME/tig/tigrc"
+set -x XAUTHORITY "$XDG_RUNTIME_DIR/Xauthority"
+set -x ICEAUTHORITY "$XDG_CACHE_HOME/ICEAuthority"
 alias svn 'snv --config-dir "$XDG_CONFIG_HOME/subversion"'
 
 
@@ -26,6 +28,11 @@ mkdir -p "$XDG_CACHE_HOME/gradle"
 if [ ! -e "$XDG_DATA_HOME/gradle/caches" ];
 	ln -s "$XDG_CACHE_HOME/gradle" "$XDG_DATA_HOME/gradle/caches"
 end
+
+# XDG Patches - GnuPG
+set -x GNUPGHOME "$XDG_DATA_HOME/gnupg"
+alias gpg 'gpg --homedir "$GNUPGHOME"'
+alias gpg2 'gpg2 --homedir "$GNUPGHOME"'
 
 
 # XDG Patches - wget
@@ -50,6 +57,10 @@ set -x GEM_SPEC_CACHE "$XDG_CACHE_HOME/gem"
 set -l RUBY_VERSION (ruby --version | sed "s/.*\([0-9]\.[0-9]\)\.[0-9].*/\1.0/g")
 set -x GEM_PATH "/usr/lib/ruby/gems/$RUBY_VERSION:$GEM_HOME/ruby/$RUBY_VERSION"
 #set -x PATH $PATH "$GEM_HOME/bin"
+# Patch the Ruby Bundler
+set -x BUNDLE_USER_CONFIG "$XDG_CONFIG_HOME/bundle"
+set -x BUNDLE_USER_CACHE "$XDG_CACHE_HOME/bundle"
+set -x BUNDLE_USER_PLUGIN "$XDG_DATA_HOME/bundle"
 
 # XDG Patches - Rust
 set -x CARGO_HOME "$XDG_DATA_HOME/cargo"
