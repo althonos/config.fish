@@ -8,7 +8,7 @@ set -x CARGO_INSTALL_ROOT "$HOME/.local"
 
 # Ruby
 set -gx GEM_PATH (ruby -r rubygems -e 'puts Gem.user_dir')
-set -gx PATH "$GEM_PATH/bin" $PATH
+set -gx PATH "$GEM_PATH/bin" "$GEM_HOME/bin" $PATH
 
 # Vita SDK
 set -x VITASDK "$XDG_DATA_HOME/vitasdk"
