@@ -64,11 +64,18 @@ set -gx CARGO_HOME "$XDG_DATA_HOME/cargo"
 set -gx RUSTUP_HOME "$XDG_DATA_HOME/rustup"
 # Move cache from XDG_DATA_HOME to XDG_CACHE_HOME
 for dir in "registry" "binary-cache" "script-cache";
-	if [ ! -e "$XDG_DATA_HOME/cargo/$dir" ];
+	if [ ! -e "$XDG_CACHE_HOME/cargo/$dir" ];
 		mkdir -p "$XDG_CACHE_HOME/cargo/$dir"
 		ln -s "$XDG_CACHE_HOME/cargo/$dir" "$XDG_DATA_HOME/cargo"
 	end
 end
+for dir in "downloads" "tmp";
+	if [ ! -e "$XDG_CACHE_HOME/rustup/$dir" ];
+		mkdir -p "$XDG_CACHE_HOME/rustup/$dir"
+		ln -s "$XDG_CACHE_HOME/rustup/$dir" "$XDG_DATA_HOME/rustup"
+	end
+end
+
 
 
 # XDG Patches - npm
@@ -106,3 +113,7 @@ set -gx R_HOME_USER "$XDG_DATA_HOME/R"
 # XDG Patch - git
 mkdir "$XDG_CONFIG_HOME/git" -p
 touch "$XDG_CONFIG_HOME/git/config"
+
+
+# XDG Patch - TeXLive
+set -gx TEXMFHOME "$XDG_DATA_HOME/texmf"
