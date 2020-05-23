@@ -13,7 +13,7 @@ alias svn 'snv --config-dir "$XDG_CONFIG_HOME/subversion"'
 # XDG Patches - atom
 set -gx ATOM_HOME "$XDG_DATA_HOME/atom"
 mkdir -p "$XDG_CACHE_HOME/atom/compile-cache"
-if [ ! -e "$XDG_DATA_HOME/atom/compile-cache" ];
+if [ ! -e "$XDG_DATA_HOME/atom/compile-cache" ] && [ -e "$XDG_DATA_HOME/atom" ];
 	ln -s "$XDG_CACHE_HOME/atom/compile-cache" "$XDG_DATA_HOME/atom/compile-cache"
 end
 
@@ -22,7 +22,7 @@ end
 set -x GRADLE_USER_HOME "$XDG_DATA_HOME/gradle"
 # Move cache from XDG_DATA_HOME to XDG_CACHE_HOME
 mkdir -p "$XDG_CACHE_HOME/gradle"
-if [ ! -e "$XDG_DATA_HOME/gradle/caches" ];
+if [ ! -e "$XDG_DATA_HOME/gradle/caches" ] && [ -e "$XDG_DATA_HOME/gradle" ];
 	ln -s "$XDG_CACHE_HOME/gradle" "$XDG_DATA_HOME/gradle/caches"
 end
 
@@ -87,7 +87,7 @@ alias sbt='sbt -ivy "$XDG_DATA_HOME/ivy2" -sbt-dir "$XDG_DATA_HOME/sbt"'
 alias mvn 'mvn -gs "$XDG_CONFIG_HOME/maven/settings.xml"'
 # Move cache
 mkdir -p "$XDG_CACHE_HOME/ivy2"
-if [ ! -e "$XDG_DATA_HOME/ivy2/cache" ];
+if [ ! -e "$XDG_DATA_HOME/ivy2/cache" ] && [ -e "$XDG_DATA_HOME/ivy2" ];
 	ln -s "$XDG_CACHE_HOME/ivy2" "$XDG_DATA_HOME/ivy2/cache";
 end
 
