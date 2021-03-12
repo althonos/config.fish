@@ -51,8 +51,10 @@ alias mypy 'mypy --cache-dir="$XDG_CACHE_HOME/mypy"'
 set -gx GEM_HOME "$XDG_DATA_HOME/gem"
 set -gx GEM_SPEC_CACHE "$XDG_CACHE_HOME/gem"
 # Patch the GEM_PATH variable with latest ruby
-set -l RUBY_VERSION (ruby --version | sed "s/.*\([0-9]\.[0-9]\)\.[0-9].*/\1.0/g")
-set -gx GEM_PATH "/usr/lib/ruby/gems/$RUBY_VERSION:$GEM_HOME/ruby/$RUBY_VERSION"
+if command -v ruby &>/dev/null;
+	set -l RUBY_VERSION (ruby --version | sed "s/.*\([0-9]\.[0-9]\)\.[0-9].*/\1.0/g")
+	set -gx GEM_PATH "/usr/lib/ruby/gems/$RUBY_VERSION:$GEM_HOME/ruby/$RUBY_VERSION"
+end
 #set -x PATH $PATH "$GEM_HOME/bin"
 # Patch the Ruby Bundler
 set -gx BUNDLE_USER_CONFIG "$XDG_CONFIG_HOME/bundle"

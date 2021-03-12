@@ -7,8 +7,10 @@ set -x RUST_TARGET_PATH "$RUSTUP_HOME/targets"
 set -x CARGO_INSTALL_ROOT "$HOME/.local"
 
 # Ruby
-set -gx GEM_PATH (ruby -r rubygems -e 'puts Gem.user_dir')
-set -gx PATH "$GEM_PATH/bin" "$GEM_HOME/bin" $PATH
+if command -v ruby &>/dev/null
+	set -gx GEM_PATH (ruby -r rubygems -e 'puts Gem.user_dir')
+	set -gx PATH "$GEM_PATH/bin" "$GEM_HOME/bin" $PATH
+end
 
 # Vita SDK
 set -x VITASDK "$XDG_DATA_HOME/vitasdk"
