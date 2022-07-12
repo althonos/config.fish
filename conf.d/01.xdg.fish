@@ -119,3 +119,7 @@ touch "$XDG_CONFIG_HOME/git/config"
 
 # XDG Patch - TeXLive
 set -gx TEXMFHOME "$XDG_DATA_HOME/texmf"
+
+
+# XDG Patch - PyStow
+set -gx PYSTOW_USE_APPDIRS true
