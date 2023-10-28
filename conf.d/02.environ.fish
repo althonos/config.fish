@@ -32,3 +32,5 @@ set -gx ELECTRON_TRASH "gio"
 set -gx DEVKITPRO "/opt/devkitpro"
 set -x PATH "$DEVKITPRO/tools/bin" "$DEVKITPRO/devkitA64/bin" $PATH
 
+# disable virtualenv prompt since BobTheFish has one
+set -x VIRTUAL_ENV_DISABLE_PROMPT 1
