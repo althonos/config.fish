@@ -1,5 +1,0 @@
-eval (thefuck --alias | tr '
-' ';')
-
-
-
