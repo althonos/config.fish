@@ -57,10 +57,10 @@ if command -v ruby &>/dev/null;
 end
 #set -x PATH $PATH "$GEM_HOME/bin"
 # Patch the Ruby Bundler
-set -gx BUNDLE_USER_CONFIG "$XDG_CONFIG_HOME/bundle"
+set -gx BUNDLE_USER_CONFIG "$XDG_CONFIG_HOME/bundle/config"
 set -gx BUNDLE_USER_CACHE "$XDG_CACHE_HOME/bundle"
 set -gx BUNDLE_USER_PLUGIN "$XDG_DATA_HOME/bundle"
-mkdir -p $BUNDLE_USER_CONFIG $BUNDLE_USER_CACHE $BUNDLE_USER_PLUGIN
+mkdir -p (dirname $BUNDLE_USER_CONFIG) $BUNDLE_USER_CACHE $BUNDLE_USER_PLUGIN
 
 # XDG Patches - Rust
 set -gx CARGO_HOME "$XDG_DATA_HOME/cargo"
