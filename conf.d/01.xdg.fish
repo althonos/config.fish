@@ -128,3 +128,7 @@ set -gx PYSTOW_USE_APPDIRS true
 # XDG Patch - CUDA
 set -gx CUDA_CACHE_PATH "$XDG_CACHE_HOME/cuda/ComputeCache"
 mkdir -p $CUDA_CACHE_PATH
+
+# XDG Patch - rye
+set -gx RYE_HOME "$XDG_DATA_HOME/rye"
+mkdir -p $RYE_HOME
