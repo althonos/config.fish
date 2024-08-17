@@ -131,4 +131,4 @@ mkdir -p $CUDA_CACHE_PATH
 
 # XDG Patch - rye
 set -gx RYE_HOME "$XDG_DATA_HOME/rye"
-mkdir -p $RYE_HOME
+mkdir -p $RYE_HOME/shims
