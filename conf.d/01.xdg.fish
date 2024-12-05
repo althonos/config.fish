@@ -132,3 +132,7 @@ mkdir -p $CUDA_CACHE_PATH
 # XDG Patch - rye
 set -gx RYE_HOME "$XDG_DATA_HOME/rye"
 mkdir -p $RYE_HOME/shims
+
+# XDG Patch - Conan2
+set -gx CONAN_HOME "$XDG_DATA_HOME/conan2"
+mkdir -p $CONAN_HOME
