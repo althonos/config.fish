@@ -16,3 +16,9 @@ if type -q pip
 	end
 end
 
+
+if type -q ab-av1
+        if [ ! -e "$COMPLETIONS_DIR/ab-av1.fish" ]
+                ab-av1 print-completions fish > "$COMPLETIONS_DIR/ab-av1.fish"
+        end
+end
